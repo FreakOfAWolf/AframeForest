@@ -1,0 +1,97 @@
+<html>
+
+<head>
+	<script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js">
+	</script>
+
+</head>
+
+<body>
+
+	<a-scene fog="color:black;  far:50;  near:0;  density:1">
+		<a-entity
+			environment="preset:  forest;  groundYScale:  4;  groundTexture:  walkernoise;  groundColor:  #060f0b;  groundColor2:  #050c0c;  dressing:  trees;  dressingAmount:  5000;  dressingColor:  #0d1a18; dressingScale: 10; lightPosition:0 -0.01 -0.46;  active:  true;  seed:  8;  skyType:  gradient;  skyColor:  #000000;  horizonColor:  #eff9b7;  fog:  0.8;  dressingOnPlayArea:  0.0001">
+		</a-entity>
+
+		<a-assets>
+			<img id=" testTex" src="test.png">
+			<!-- <a-mixin id="floorMat" material="color:#BBB"></a-mixin> -->
+			<img crossorigin="anonymous" id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+			<img crossorigin="anonymous" id="skyTexture"
+				src="https://files.gamebanana.com/img/ss/textures/5339e646198dd.jpg">
+		</a-assets>
+
+		<a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5"
+			segments-width="8"></a-sky>
+
+		<a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="500" width="500"></a-plane>
+
+		<a-light type="directional" intensity="0.9" position="-1 -2  2" color="#00ffff"></a-light>
+		<a-light type="directional" intensity="1.0" position=" 2  1 -1" color="#00ffff"></a-light>
+
+		<!-- Blue box animated -->
+		<a-box position="0 2 -15" scale="0.5 0.6 0.6" color="#00ffff" rotation="45 90 45"
+			animation="property: rotation; begin: click; to: 360 360 360; loop: true; dur: 7000">
+			<a-entity light="type: ambient; color: #BBB"></a-entity>
+		</a-box>
+
+		<!-- Firefly with animations -->
+		<a-sphere position="-20 5 -20" scale="0.1 0.1 0.1" color="#ddd928" rotation="45 90 45"
+			animation="property: position; to: 20 1 -15; dur: 15000; loop: true; easing: linear"></a-sphere>
+
+		<a-sphere position="-2 0 -20" scale="0.1 0.1 0.1" color="#ddd928" rotation="45 90 45"
+			animation="property: position; to: 15 3 -15; dur: 10000; loop: true; easing: linear"></a-sphere>
+
+		<a-sphere position="5 0 -20" scale="0.1 0.1 0.1" color="#ddd928" rotation="45 90 45"
+			animation="property: position; to: -30 4 -15; dur: 11000; loop: true; easing: linear"></a-sphere>
+
+		<a-sphere position="7 0 -20" scale="0.1 0.1 0.1" color="#ddd928" rotation="45 90 45"
+			animation="property: position; to: -15 5 -15; dur: 13000; loop: true; easing: linear"></a-sphere>
+
+		<!-- Trees -->
+		<a-box id="tree" position="-7 1.5 2" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="-4 1.5 -10" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="8 1.5 9" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="-13 1.5 -10" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="15 1.5 12" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="10 1.5 4" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="10 1.5 -10" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-box id="tree" position="2 1.5 6" scale="0.5 4 0.6" color="#0f100a" rotation="0 0 0">
+			<a-sphere position="0 0.8 0" scale="4.5 0.5 4.5" color="#001a11"></a-sphere>
+		</a-box>
+
+		<a-mixin id="tree" geometry="primitive: tree" material random-position="min: -100 -100 -100; max: 100 100 100">
+		</a-mixin>
+		<a-entity entity-generator="mixin: tree; num: 100"></a-entity>
+
+		<a-camera position="0 2 0" rotation="0 0 45">
+			<a-cursor color="#ffffff"></a-cursor>
+		</a-camera>
+
+	</a-scene>
+</body>
+
+</html>
